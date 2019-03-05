@@ -1,21 +1,31 @@
 package streamsExercises;
 
+import org.apache.commons.csv.CSVRecord;
+
 import java.util.Date;
 
 public class AddressesCsv {
 
-    String Index;
-    double LivingSpace;
+    public AddressesCsv(int index, int livingSpace, int beds) {
+        Index = index;
+        LivingSpace = livingSpace;
+        Beds = beds;
+    }
+
+    int Index;
+    int LivingSpace;
     int Beds;
     int Baths;
     int Zip;
     Date Year;
+    int List;
+    double Price;
 
-    public String getIndex() {
-        return Index;<
+    public int getIndex() {
+        return Index;
     }
 
-    public double getLivingSpace() {
+    public int getLivingSpace() {
         return LivingSpace;
     }
 
@@ -43,19 +53,9 @@ public class AddressesCsv {
         return Price;
     }
 
-    public AddressesCsv(String index, double livingSpace, int beds, int baths, int zip, Date year, int list, double price) {
-        Index = index;
-        LivingSpace = livingSpace;
-        Beds = beds;
-        Baths = baths;
-        Zip = zip;
-        Year = year;
-        List = list;
-        Price = price;
+    public static AddressesCsv AddressesCsvInit(CSVRecord csvRecord) {
+
+        return new AddressesCsv(Integer.parseInt(csvRecord.get(0)), Integer.parseInt(csvRecord.get(1)), Integer.parseInt((csvRecord.get(2))));
     }
-
-    int List;
-    double Price;
-
 
 }
